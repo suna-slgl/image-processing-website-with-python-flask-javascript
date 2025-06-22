@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Dropdown Menüler -->
+    <div class="dropdown">
+        <button onclick="toggleMenu('thresholdingMenu')" class="dropbtn">Thresholding</button>
+        <div id="thresholdingMenu" class="dropdown-content">
+            <a href="#" onclick="runAdaptiveThresholding()">Adaptive Thresholding</a>
+            <a href="#" onclick="runOtsuThresholding()">Otsu Thresholding</a>
+        </div>
+    </div>    
+
+    <div class="dropdown">
+        <button onclick="runBlur()" class="dropbtn">Bulanıklaştırma</button>
+        <div id="blurMenu" class="dropdown-content">
+        </div>
+    </div>
+            
+    <div class="dropdown">
+        <button onclick="runSharpness()" class="dropbtn">Keskinleştirme</button>
+        <div id="sharpnessMenu" class="dropdown-content">
+        </div>
+    </div>
+            
+    <div class="dropdown">
+        <button  onclick="runGamma()" class="dropbtn">Gamma Filtreleme</button>
+        <div id="gammaMenu" class="dropdown-content">
+        </div>
+    </div>
+    
+            
+    <div class="dropdown">
+        <button onclick="toggleMenu('edgeDetectionMenu')" class="dropbtn">Kenar Tespit Et</button>
+        <div id="edgeDetectionMenu" class="dropdown-content">
+            <a onclick="runCanny()" href="#">Canny Filter</a>
+            <a onclick="runSobel()" href="#">Sobel Filter</a>
+            <a onclick="runLaplacian()" href="#">Laplacian Filter</a>
+        </div>
+    </div>
+            
+    <div class="dropdown">
+        <button onclick="toggleMenu('cornerDetectionMenu')" class="dropbtn">Köşe Tespit Et</button>
+        <div id="cornerDetectionMenu" class="dropdown-content">
+            <a onclick="runHarris()" href="#">Harris Algoritması</a>
+            <a onclick="runShiTomasi()" href="#">Shi-Tomasi Algoritması</a>
+        </div>
+    </div>
+     
+    <div class="dropdown">
+        <button onclick="toggleFaceDetection()" class="dropbtn">Yüz Tanımlama</button>
+        
+        <div id="gammaMenu" class="dropdown-content">
+        </div>
+    </div>    
+
+    <!-- Yükleme Alanı -->
+   <div class="upload-area">
+        <div class="upload-box">
+            <img id="cameraFeed" style="display: none;" alt="Yüz Tanıma Kamerası">
+
+            <button class="upload-button" onclick="uploadImage()"> Resim Yükle ▼</button>
+            <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)" />
+        </div>
+    
+        <div class="button-container">
+            <div class="compare-button"
+                onmousedown="showOriginal()"
+                onmouseup="showEdited()"
+                onmouseleave="showEdited()">
+                Compare
+            </div>
+            <div class="reset-button"
+                onclick="resetImage()">
+                Reset
+            </div>
+            <div class="download-button"
+                onclick="downloadImage()">
+                Download
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
